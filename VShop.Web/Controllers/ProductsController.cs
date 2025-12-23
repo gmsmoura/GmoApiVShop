@@ -26,7 +26,7 @@ public class ProductsController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProductViewModel>>> Index()
     {
-        
+
         var result = await _productService.GetAllProducts(await GetAccessToken());
 
         if (result is null)
@@ -108,7 +108,7 @@ public class ProductsController : Controller
 
         return RedirectToAction("Index");
     }
-    private async Task<string> GetAccessToken()
+    private async Task<string?> GetAccessToken()
     {
         return await HttpContext.GetTokenAsync("access_token");
     }
