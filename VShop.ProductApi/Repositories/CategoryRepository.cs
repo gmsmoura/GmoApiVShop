@@ -14,12 +14,12 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<IEnumerable<Category>> GetAll()
     {
-        return await _context.Categories.ToListAsync();
+        return await _context.Categories!.ToListAsync();
     }
 
     public async Task<IEnumerable<Category>> GetCategoriesProducts()
     {
-        return await _context.Categories.Include(x => x.Products).ToListAsync();
+        return await _context.Categories!.Include(x => x.Products).ToListAsync();
     }
 
     public async Task<Category> GetById(int id)
@@ -29,7 +29,7 @@ public class CategoryRepository : ICategoryRepository
 
     public async Task<Category> Create(Category category)
     {
-        _context.Categories.Add(category);
+        _context.Categories!.Add(category);
         await _context.SaveChangesAsync();
         return category;
     }

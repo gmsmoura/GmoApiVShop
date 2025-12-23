@@ -13,7 +13,7 @@ public class ProductDTO
     [MinLength(3)]
     [MaxLength(100)]
     public string? Name { get; set; }
-    
+
     [Required(ErrorMessage = "The Description is Required")]
     [MinLength(5)]
     [MaxLength(200)]
@@ -34,7 +34,7 @@ public class ProductDTO
     public string? CategoryName { get; set; }
 
     public int CategoryId { get; set; }
-    [JsonIgnore]
-    public Category? Category { get; set; }   
+
+    [JsonIgnore] // JsonIgnore para evitar referência circular durante a serialização JSON (evita que a propriedade Category seja incluída na resposta JSON)
+    public Category? Category { get; set; }
 }
-    

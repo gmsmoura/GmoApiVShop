@@ -30,14 +30,13 @@ public class CategoryService : ICategoryService
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStreamAsync();
-                categories = await JsonSerializer
-                          .DeserializeAsync<IEnumerable<CategoryViewModel>>(apiResponse, _options);
+                categories = await JsonSerializer.DeserializeAsync<IEnumerable<CategoryViewModel>>(apiResponse, _options);
             }
             else
             {
                 throw new HttpRequestException(response.ReasonPhrase);
             }
         }
-        return categories;
+        return categories!;
     }
 }

@@ -28,15 +28,14 @@ public class CouponService : ICouponService
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStreamAsync();
-                couponVM = await JsonSerializer.DeserializeAsync<CouponViewModel>
-                              (apiResponse, _options);
+                couponVM = await JsonSerializer.DeserializeAsync<CouponViewModel>(apiResponse, _options);
             }
             else
             {
-                return null;
+                return null!;
             }
         }
-        return couponVM;
+        return couponVM!;
     }
 
     private static void PutTokenInHeaderAuthorization(string token, HttpClient client)

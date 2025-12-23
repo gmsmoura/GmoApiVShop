@@ -47,18 +47,19 @@ namespace VShop.ProductApi.Context
                 .IsRequired()
                   .OnDelete(DeleteBehavior.Cascade);
 
-           mb.Entity<Category>().HasData(
-               new Category
-               {
-                   CategoryId = 1,
-                   Name = "Material Escolar",
-               },
-               new Category
-               {
-                   CategoryId = 2,
-                   Name = "Acessórios",
-               }
-           );
+            // utlização do HasData para popular a tabela de categoria caso não tenha valores
+            mb.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryId = 1,
+                    Name = "Material Escolar",
+                },
+                new Category
+                {
+                    CategoryId = 2,
+                    Name = "Acessórios",
+                }
+            );
         }
     }
 }

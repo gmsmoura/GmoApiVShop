@@ -13,7 +13,7 @@ builder.Services.AddControllers()
     .AddJsonOptions(options =>
        {
            options.JsonSerializerOptions.ReferenceHandler =
-               ReferenceHandler.IgnoreCycles;
+               ReferenceHandler.IgnoreCycles; // Código para ignorar ciclos na serialização JSON (exemplo: relacionamentos circulares entre entidades).
        });
 
 builder.Services.AddEndpointsApiExplorer();
